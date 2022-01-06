@@ -1,3 +1,13 @@
+// Import providers
+import { AppProviders } from 'components/utilities';
+
+// Import components
+import { DataTable } from 'components/elements';
+
 export const App = () => {
-	return <div>Hello, World!</div>;
+	return (
+		<AppProviders>
+			<DataTable />
+		</AppProviders>
+	);
 };
