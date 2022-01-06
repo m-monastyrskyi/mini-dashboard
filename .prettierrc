@@ -1,0 +1,7 @@
+{
+    "singleQuote": true,
+    "useTabs": true,
+    "proseWrap": "preserve",
+    "semi": true,
+    "arrowParens": "always"
+}

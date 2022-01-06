@@ -1,0 +1,38 @@
+{
+    "plugins": [
+        "react",
+        "react-hooks"
+    ],
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "jquery": true
+    },
+    "rules": {
+        "no-console": "error",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-curly-brace-presence": [
+            2,
+            {
+                "props": "never",
+                "children": "ignore"
+            }
+        ]
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "globals": {
+        "process": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "parserOptions": {
+        "sourceType": "module"
+    }
+}
