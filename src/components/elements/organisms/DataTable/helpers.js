@@ -6,6 +6,7 @@ const formatColumn = (column) => ({
 		flex: 1,
 		minWidth: 200,
 	}),
+	sortable: false,
 	...column,
 });
 

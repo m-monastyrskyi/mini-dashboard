@@ -38,6 +38,7 @@ export const DataTable = ({ columns, endpoint }) => {
 			onPageChange={onPageChange}
 			paginationMode="server"
 			disableColumnFilter
+			disableSelectionOnClick
 			autoHeight
 		/>
 	);
