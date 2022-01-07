@@ -1,18 +1,32 @@
-import { Routes as ReactRoutes, Route, Navigate } from 'react-router-dom';
+import React from 'react';
+import { Routes as ReactRoutes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { Users, Comments, Posts, NotFound } from 'views';
+// Import helpers
 import { ROUTE_PATHS } from 'helpers';
-const { HOME, USERS, COMMENTS, POSTS } = ROUTE_PATHS;
+import { APP_ROUTES } from './appRoutes';
+
+const { USERS, COMMENTS, POSTS } = ROUTE_PATHS;
 
 export const Routes = () => {
 	return (
-		<ReactRoutes>
-			<Route path={HOME} element={<Navigate to={USERS} />} />
-			<Route path={USERS} element={<Users />} />
-			<Route path={POSTS} element={<Posts />} />
-			<Route path={COMMENTS} element={<Comments />} />
-
-			<Route path="*" element={<NotFound />} />
-		</ReactRoutes>
+		<>
+			<Link to={USERS}>Users</Link>
+			<Link to={POSTS}>Posts</Link>
+			<Link to={COMMENTS}>Comments</Link>
+			<ReactRoutes>
+				{APP_ROUTES.map(({ path, component: Component }) => (
+					<Route
+						key={path}
+						path={path}
+						element={
+							<React.Suspense fallback={<h2>Loading...</h2>}>
+								{Component}
+							</React.Suspense>
+						}
+					/>
+				))}
+			</ReactRoutes>
+		</>
 	);
 };

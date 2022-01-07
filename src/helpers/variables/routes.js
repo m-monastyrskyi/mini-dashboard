@@ -3,4 +3,5 @@ export const ROUTE_PATHS = {
 	USERS: 'users',
 	COMMENTS: 'comments',
 	POSTS: 'posts',
+	NOT_FOUND: '*',
 };
