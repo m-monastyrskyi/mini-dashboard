@@ -1,17 +1,10 @@
 // Import providers
-import { AppProviders } from 'components/utilities';
-
-// Import components
-import { Users, Comments, Posts } from 'views';
+import { AppProviders, Routes } from 'components/utilities';
 
 export const App = () => {
 	return (
 		<AppProviders>
-			<>
-				<Users />
-				<Comments />
-				<Posts />
-			</>
+			<Routes />
 		</AppProviders>
 	);
 };

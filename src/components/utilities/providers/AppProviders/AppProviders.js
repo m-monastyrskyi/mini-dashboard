@@ -1,3 +1,4 @@
+import { BrowserRouter } from 'react-router-dom';
 import { element } from 'prop-types';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -10,12 +11,14 @@ export const AppProviders = ({ children }) => {
 	const { queryClient } = useAppProviders();
 
 	return (
-		<QueryClientProvider client={queryClient}>
-			<ThemeProvider theme={createTheme()}>
-				{children}
-				<ReactQueryDevtools initialIsOpen={false} />
-			</ThemeProvider>
-		</QueryClientProvider>
+		<BrowserRouter>
+			<QueryClientProvider client={queryClient}>
+				<ThemeProvider theme={createTheme()}>
+					{children}
+					<ReactQueryDevtools initialIsOpen={false} />
+				</ThemeProvider>
+			</QueryClientProvider>
+		</BrowserRouter>
 	);
 };
 
