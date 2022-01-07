@@ -2,12 +2,15 @@
 import { AppProviders } from 'components/utilities';
 
 // Import components
-import { Users } from 'views';
+import { Users, Comments } from 'views';
 
 export const App = () => {
 	return (
 		<AppProviders>
-			<Users />
+			<>
+				<Users />
+				<Comments />
+			</>
 		</AppProviders>
 	);
 };

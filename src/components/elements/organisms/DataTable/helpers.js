@@ -1,8 +1,15 @@
 import axios from 'axios';
 import { API_URL } from 'helpers';
 
-export const formatColumns = (columns) =>
-	columns.map((column) => ({ sortable: false, width: 200, ...column }));
+const formatColumn = (column) => ({
+	...(!column.width && {
+		flex: 1,
+		minWidth: 200,
+	}),
+	...column,
+});
+
+export const formatColumns = (columns) => columns.map(formatColumn);
 
 // Normally I would use a custom service instead of axios,
 // made with interceptors, custom headers, baseURL, etc.
