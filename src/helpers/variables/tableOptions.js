@@ -1,0 +1,4 @@
+export const INITIAL_TABLE_OPTIONS = {
+	PAGE_SIZE: 5,
+	ROWS_PER_PAGE_OPTIONS: [5, 10, 25, 50],
+};

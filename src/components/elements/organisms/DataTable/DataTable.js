@@ -1,37 +1,49 @@
+import { array, string } from 'prop-types';
 import { DataGrid } from '@mui/x-data-grid';
 
-import { useQuery } from 'react-query';
-import axios from 'axios';
+// Import components
+import { ErrorAlert } from 'components/elements';
 
-const columns = [
-	{ field: 'id', headerName: 'ID', sortable: false },
-	{ field: 'name', headerName: 'Name', sortable: false },
-	{ field: 'email', headerName: 'Email', sortable: false, width: 200 },
-	{ field: 'phone', headerName: 'Phone', sortable: false },
-	{ field: 'website', headerName: 'Website', sortable: false, width: 100 },
-	{
-		field: 'company.name',
-		headerName: 'Company',
-		sortable: false,
-		renderCell: ({ row }) => row.company.name,
-	},
-];
+// Import utilities
+import { useDataTable } from './useDataTable';
 
-const fetchData = () => axios('https://jsonplaceholder.typicode.com/users');
+// Import helpers
+import { INITIAL_TABLE_OPTIONS } from 'helpers';
+const { ROWS_PER_PAGE_OPTIONS } = INITIAL_TABLE_OPTIONS;
 
-export const DataTable = () => {
-	const { isLoading, data } = useQuery('data', fetchData);
+export const DataTable = ({ columns, endpoint }) => {
+	const {
+		rows,
+		error,
+		isError,
+		pageSize,
+		rowCount,
+		isLoading,
+		formattedColumns,
+		onPageChange,
+		onPageSizeChange,
+	} = useDataTable({ columns, endpoint });
 
-	const rows = data?.data ?? [];
+	if (isError) return <ErrorAlert error={error} />;
 
 	return (
 		<DataGrid
 			rows={rows}
-			columns={columns}
+			columns={formattedColumns}
 			loading={isLoading}
-			rowsPerPageOptions={[5, 10, 25, 50, 100]}
+			pageSize={pageSize}
+			rowCount={rowCount}
+			rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}
+			onPageSizeChange={onPageSizeChange}
+			onPageChange={onPageChange}
+			paginationMode="server"
 			disableColumnFilter
 			autoHeight
 		/>
 	);
+};
+
+DataTable.propTypes = {
+	columns: array.isRequired,
+	endpoint: string.isRequired,
 };

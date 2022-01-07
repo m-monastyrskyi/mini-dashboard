@@ -2,12 +2,12 @@
 import { AppProviders } from 'components/utilities';
 
 // Import components
-import { DataTable } from 'components/elements';
+import { Users } from 'views';
 
 export const App = () => {
 	return (
 		<AppProviders>
-			<DataTable />
+			<Users />
 		</AppProviders>
 	);
 };
