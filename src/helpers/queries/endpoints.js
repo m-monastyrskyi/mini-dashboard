@@ -5,4 +5,5 @@ export const API_URL = 'https://jsonplaceholder.typicode.com';
 export const ENDPOINTS = {
 	USERS: 'users',
 	COMMENTS: 'comments',
+	POSTS: 'posts',
 };

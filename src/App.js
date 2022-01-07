@@ -2,7 +2,7 @@
 import { AppProviders } from 'components/utilities';
 
 // Import components
-import { Users, Comments } from 'views';
+import { Users, Comments, Posts } from 'views';
 
 export const App = () => {
 	return (
@@ -10,6 +10,7 @@ export const App = () => {
 			<>
 				<Users />
 				<Comments />
+				<Posts />
 			</>
 		</AppProviders>
 	);
